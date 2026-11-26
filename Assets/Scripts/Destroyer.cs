@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    // Inspector Values
-    [SerializeField, Min(0f)] float destroyTime;
-    [Space]
-    
     [SerializeField] float destroyPositonY;
     
     
@@ -28,7 +24,4 @@ public class Destroyer : MonoBehaviour
         }
 
     }
-
-    public void DestroyAfterTime()
-        => Destroy(gameObject, destroyTime);
 }
