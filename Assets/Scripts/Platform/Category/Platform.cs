@@ -7,7 +7,7 @@ public class Platform : MonoBehaviour
 // Component
     protected PlayerController player;
     protected PlayerHurt hurt;
-    protected PlayerHeal heal;
+    PlayerHeal heal;
 
 // === Events === //
     void OnCollisionEnter2D(Collision2D other)
