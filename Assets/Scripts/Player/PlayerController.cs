@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     // Components
     PlayerMovement move;
     Destroyer destroyer;
+    PlayerHurt hurt;
     
     // Private Values
     public GameObject currPlatform;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         move = GetComponent<PlayerMovement>();
+        hurt = GetComponent<PlayerHurt>();
+        
         destroyer = GetComponent<Destroyer>();
     }
 
@@ -44,8 +47,7 @@ public class PlayerController : MonoBehaviour
                 = currPlatform.GetComponent<BoxCollider2D>();
 
             platformCollider.enabled = false;
-            
-            print("Collision Ceiling");
+            hurt.Hurt();
         }
     }
 
