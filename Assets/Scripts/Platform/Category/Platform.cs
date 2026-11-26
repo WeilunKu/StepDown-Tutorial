@@ -12,12 +12,11 @@ public class Platform : MonoBehaviour
 // === Events === //
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        GameObject playerObj = other.gameObject;
+        if (playerObj.CompareTag("Player"))
         {
             // Components
-            player = other.gameObject.GetComponent<PlayerController>();
-            hurt = other.gameObject.GetComponent<PlayerHurt>();
-            heal = other.gameObject.GetComponent<PlayerHeal>();
+            AllComponents(playerObj);
         
             // Logics
             player.currPlatform = gameObject;
@@ -29,6 +28,14 @@ public class Platform : MonoBehaviour
     {
         heal.Heal();
         print($"Player collided with {gameObject.name}");
+    }
+    
+    // === Methods === \\
+    void AllComponents(GameObject playerObj)
+    {
+        player = playerObj.GetComponent<PlayerController>();
+        hurt = playerObj.GetComponent<PlayerHurt>();
+        heal = playerObj.GetComponent<PlayerHeal>();
     }
 
 }
