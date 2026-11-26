@@ -5,6 +5,8 @@ public class Platform : MonoBehaviour
     // Component
     protected PlayerController player;
     protected PlayerHurt hurt;
+    protected new AudioManager audio;
+    
     PlayerHeal heal;
 
     // Private Values
@@ -41,6 +43,9 @@ public class Platform : MonoBehaviour
         player = playerObj.GetComponent<PlayerController>();
         hurt = playerObj.GetComponent<PlayerHurt>();
         heal = playerObj.GetComponent<PlayerHeal>();
+        
+        audio = GameObject.FindWithTag("AudioManager")
+            .GetComponent<AudioManager>();
     }
 
 }
