@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-// Platform
-
-// Component
+    // Component
     protected PlayerController player;
     protected PlayerHurt hurt;
     PlayerHeal heal;
 
-// === Events === //
+    // Private Values
+    bool isPlayerOnPlatform;
+    
+    // === Events === //
     void OnCollisionEnter2D(Collision2D other)
     {
         GameObject playerObj = other.gameObject;
@@ -19,6 +20,10 @@ public class Platform : MonoBehaviour
             AllComponents(playerObj);
         
             // Logics
+            isPlayerOnPlatform = 
+                other.contacts[0].normal == Vector2.down;
+            
+            if (!isPlayerOnPlatform) return;
             player.currPlatform = gameObject;
             Features();
         }
