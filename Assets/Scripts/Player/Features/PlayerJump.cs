@@ -8,7 +8,7 @@ public class PlayerJump : MonoBehaviour
     Rigidbody2D rb;
 
     // Inspector
-    [SerializeField, Range(1f, 10f)]
+    [SerializeField, Range(1f, 20f)]
     float speed = 1f;
 
     // === Life cycle === //
