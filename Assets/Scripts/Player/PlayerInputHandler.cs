@@ -10,7 +10,7 @@ public class PlayerInputHandler : MonoBehaviour
     // === Life Cycle === //
     void Awake()
     {
-        movement = GetComponent<PlayerMovement>();
+        movement = GetComponentInParent<PlayerMovement>();
     }
 
     

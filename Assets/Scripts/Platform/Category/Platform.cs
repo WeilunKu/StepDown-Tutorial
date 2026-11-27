@@ -2,33 +2,53 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-// Platform
-
-// Component
+    // Component
     protected PlayerController player;
     protected PlayerHurt hurt;
-    protected PlayerHeal heal;
+    protected new AudioManager audio;
+    PlayerHeal heal;
 
-// === Events === //
+    
+    // Private Values
+    bool isPlayerOnPlatform;
+    
+    
+    // === Events === //
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        GameObject playerObj = other.gameObject;
+        if (playerObj.CompareTag("Player"))
         {
             // Components
-            player = other.gameObject.GetComponent<PlayerController>();
-            hurt = other.gameObject.GetComponent<PlayerHurt>();
-            heal = other.gameObject.GetComponent<PlayerHeal>();
+            AllComponents(playerObj);
         
             // Logics
+            isPlayerOnPlatform = 
+                other.contacts[0].normal == Vector2.down;
+            
+            if (!isPlayerOnPlatform) return;
             player.currPlatform = gameObject;
             Features();
         }
     }
 
+    
+    // === Inheritance === //
     protected virtual void Features()
     {
         heal.Heal();
         print($"Player collided with {gameObject.name}");
+    }
+    
+    // === Methods === \\
+    void AllComponents(GameObject playerObj)
+    {
+        player = playerObj.GetComponent<PlayerController>();
+        hurt = playerObj.GetComponent<PlayerHurt>();
+        heal = playerObj.GetComponent<PlayerHeal>();
+        
+        audio = GameObject.FindWithTag("AudioManager")
+            .GetComponent<AudioManager>();
     }
 
 }

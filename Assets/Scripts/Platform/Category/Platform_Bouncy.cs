@@ -15,6 +15,7 @@ public class Platform_Bouncy : Platform
 
         // Logics
         jump.Jump();
+        audio.PlayEffect(audio.jumpClip);
     }
 }
 

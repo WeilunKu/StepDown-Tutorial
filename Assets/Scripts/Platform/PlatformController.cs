@@ -15,11 +15,6 @@ public class PlatformController : MonoBehaviour
         destroyer = GetComponent<Destroyer>();
     }
 
-    void Start()
-    {
-        destroyer.DestroyAfterTime();
-    }
-
     void Update()
     {
         // platform rise

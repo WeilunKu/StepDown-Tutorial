@@ -3,20 +3,29 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Components
-    PlayerMovement move;
-    Destroyer destroyer;
+    new AudioManager audio;
     
-    // Private Values
-    public GameObject currPlatform;
-
+    Destroyer destroyer;
+    PlayerMovement move;
+    PlayerHurt hurt;
+    
+    // Inspector Values
     public GameObject[] hpBar;
-    public int currHp, maxHp;
+    
+    // Hiding
+    [HideInInspector] public GameObject currPlatform;
+    [HideInInspector] public int currHp, maxHp;
+    
     
     // === Life Cycle === //
     void Awake()
     {
-        move = GetComponent<PlayerMovement>();
+        audio = GameObject.FindWithTag("AudioManager")
+            .GetComponent<AudioManager>();
+        
         destroyer = GetComponent<Destroyer>();
+        move = GetComponent<PlayerMovement>();
+        hurt = GetComponent<PlayerHurt>();
     }
 
     void Start()
@@ -43,9 +52,10 @@ public class PlayerController : MonoBehaviour
             BoxCollider2D platformCollider 
                 = currPlatform.GetComponent<BoxCollider2D>();
 
+            // Logics
             platformCollider.enabled = false;
-            
-            print("Collision Ceiling");
+            hurt.Hurt();
+            audio.PlayEffect(audio.hurtOnCeilingClip);
         }
     }
 
