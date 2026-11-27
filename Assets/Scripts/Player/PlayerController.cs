@@ -59,8 +59,8 @@ public class PlayerController : MonoBehaviour
 
             // Logics
             platformCollider.enabled = false;
-            hurt.Hurt(ceilingDamage);
             audio.PlayEffect(audio.hurtOnCeilingClip);
+            hurt.Hurt(ceilingDamage);
         }
     }
 

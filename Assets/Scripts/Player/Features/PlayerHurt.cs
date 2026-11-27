@@ -17,7 +17,10 @@ public class PlayerHurt : MonoBehaviour
         
         for (int i = 1; i <= damage; i++)
         {
-            player.hpBar[currHP - i].SetActive(false);
+            int vaildIndex = currHP - i;
+            if (vaildIndex < 0) return;
+            
+            player.hpBar[vaildIndex].SetActive(false);
             player.currHp --;
         }
     }
