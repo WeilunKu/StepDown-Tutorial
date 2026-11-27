@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public GameObject currPlatform;
     [HideInInspector] public int currHp, maxHp;
     
+    // Private Values
+    int ceilingDamage;
     
     // === Life Cycle === //
     void Awake()
@@ -47,14 +49,17 @@ public class PlayerController : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ceiling"))
+        GameObject otherObject = other.gameObject;
+        if (otherObject.CompareTag("Ceiling"))
         {
             BoxCollider2D platformCollider 
                 = currPlatform.GetComponent<BoxCollider2D>();
 
+            ceilingDamage = otherObject.GetComponent<CeilingSpike>().GetDamage();
+
             // Logics
             platformCollider.enabled = false;
-            hurt.Hurt();
+            hurt.Hurt(ceilingDamage);
             audio.PlayEffect(audio.hurtOnCeilingClip);
         }
     }
