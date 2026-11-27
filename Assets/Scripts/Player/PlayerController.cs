@@ -7,11 +7,13 @@ public class PlayerController : MonoBehaviour
     Destroyer destroyer;
     PlayerHurt hurt;
     
-    // Private Values
-    public GameObject currPlatform;
-
+    // Inspector Values
     public GameObject[] hpBar;
-    public int currHp, maxHp;
+    
+    // Hiding
+    [HideInInspector] public GameObject currPlatform;
+    [HideInInspector] public int currHp, maxHp;
+    
     
     // === Life Cycle === //
     void Awake()
