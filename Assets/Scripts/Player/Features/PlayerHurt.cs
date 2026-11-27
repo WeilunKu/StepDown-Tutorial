@@ -12,14 +12,13 @@ public class PlayerHurt : MonoBehaviour
     public void Hurt(int damage=1)
     {
         int currHP = player.currHp;
-        
         if (currHP <= 0)
             return;
         
         for (int i = 1; i <= damage; i++)
         {
             player.hpBar[currHP - i].SetActive(false);
-            player.currHp -= 1;
+            player.currHp --;
         }
     }
 
