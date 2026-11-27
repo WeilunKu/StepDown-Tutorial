@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c8f562f907c8a49b553919af12264f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 13.9
+  speed: 6.5
 --- !u!114 &284094503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,11 +346,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30be1914efb5fd94dbf9c85a70e39682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  currPlatform: {fileID: 0}
   hpBar:
   - {fileID: 909929552}
   - {fileID: 577431702}
   - {fileID: 1019408513}
+  currPlatform: {fileID: 0}
   currHp: 0
   maxHp: 0
 --- !u!61 &284094504
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae20a423df518de4f9acd54204ea90f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
-  speed: 7
+  speed: 6.5
 --- !u!114 &284094507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,7 +1092,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

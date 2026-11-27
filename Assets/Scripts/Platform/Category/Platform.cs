@@ -6,11 +6,12 @@ public class Platform : MonoBehaviour
     protected PlayerController player;
     protected PlayerHurt hurt;
     protected new AudioManager audio;
-    
     PlayerHeal heal;
 
+    
     // Private Values
     bool isPlayerOnPlatform;
+    
     
     // === Events === //
     void OnCollisionEnter2D(Collision2D other)
@@ -31,6 +32,8 @@ public class Platform : MonoBehaviour
         }
     }
 
+    
+    // === Inheritance === //
     protected virtual void Features()
     {
         heal.Heal();

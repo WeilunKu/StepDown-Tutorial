@@ -3,8 +3,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Components
-    PlayerMovement move;
+    new AudioManager audio;
+    
     Destroyer destroyer;
+    PlayerMovement move;
     PlayerHurt hurt;
     
     // Inspector Values
@@ -18,10 +20,12 @@ public class PlayerController : MonoBehaviour
     // === Life Cycle === //
     void Awake()
     {
-        move = GetComponent<PlayerMovement>();
-        hurt = GetComponent<PlayerHurt>();
+        audio = GameObject.FindWithTag("AudioManager")
+            .GetComponent<AudioManager>();
         
         destroyer = GetComponent<Destroyer>();
+        move = GetComponent<PlayerMovement>();
+        hurt = GetComponent<PlayerHurt>();
     }
 
     void Start()
@@ -48,8 +52,10 @@ public class PlayerController : MonoBehaviour
             BoxCollider2D platformCollider 
                 = currPlatform.GetComponent<BoxCollider2D>();
 
+            // Logics
             platformCollider.enabled = false;
             hurt.Hurt();
+            audio.PlayEffect(audio.hurtOnCeilingClip);
         }
     }
 
