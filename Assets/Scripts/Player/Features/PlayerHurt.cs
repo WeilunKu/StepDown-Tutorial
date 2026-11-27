@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PlayerHurt : MonoBehaviour
 {
-// PlayerHurt
-
     PlayerController player;
 
     void Awake()
@@ -13,13 +11,16 @@ public class PlayerHurt : MonoBehaviour
 
     public void Hurt(int damage=1)
     {
-        if (player.currHp <= 0) 
+        int currHP = player.currHp;
+        
+        if (currHP <= 0)
             return;
-
-        player.currHp -= damage;
-        player.hpBar[player.currHp].SetActive(false);
-
-        print("扣血");
+        
+        for (int i = 1; i <= damage; i++)
+        {
+            player.hpBar[currHP - i].SetActive(false);
+            player.currHp -= 1;
+        }
     }
 
 }
